@@ -1,0 +1,18 @@
+# 1. Dependency Folders (These are huge and should never be uploaded)
+node_modules/
+server/node_modules/
+client/node_modules/
+
+# 2. Secret Keys & Environment Variables (CRITICAL SECURITY)
+.env
+server/.env
+client/.env
+
+# 3. Build Folders (Render and Vercel will generate these automatically)
+dist/
+build/
+client/dist/
+
+# 4. OS Generated Files (Keeps your repo clean)
+.DS_Store
+Thumbs.db
