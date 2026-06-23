@@ -2,7 +2,7 @@ import { useState } from "react";
 import API from "../api/axios.js";
 
 export default function Generator() {
-  // 1. Memory (State)
+  //  Memory (State)
   const [topic, setTopic] = useState("");
   const [format, setFormat] = useState("Video Script");
   const [generatedText, setGeneratedText] = useState("");
@@ -10,7 +10,7 @@ export default function Generator() {
   const [error, setError] = useState("");
   const [isSaved, setIsSaved] = useState(false);
 
-  // 2. The Trigger Function
+  // The Trigger Function
   const handleGenerate = async (e) => {
     e.preventDefault(); // Prevent page refresh
     if (!topic) return;
@@ -35,10 +35,9 @@ export default function Generator() {
   };
 
   const handleSaveToVault = () => {
-    // 1. Grab the existing vault from the browser's memory (or create an empty array)
     const existingVault = JSON.parse(localStorage.getItem("ai_vault")) || [];
 
-    // 2. Create the new prompt object
+    //  Create the new prompt object
     const newPrompt = {
       id: Date.now(), // Creates a unique ID based on the exact millisecond
       topic: topic,
@@ -47,20 +46,20 @@ export default function Generator() {
       date: new Date().toLocaleDateString(),
     };
 
-    // 3. Add the new prompt to the top of the vault and save it back to memory
+    //  Add the new prompt to the top of the vault and save it back to memory
     const updatedVault = [newPrompt, ...existingVault];
     localStorage.setItem("ai_vault", JSON.stringify(updatedVault));
 
-    // 4. Trigger the visual "Saved!" feedback
+    // Trigger the visual "Saved!" feedback
     setIsSaved(true);
 
-    // 5. Change the button back to normal after 3 seconds
+    //  Change the button back to normal after 3 seconds
     setTimeout(() => {
       setIsSaved(false);
     }, 3000);
   };
 
-  // 3. The UI
+  //  The UI
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-8">
       {/* Header */}
