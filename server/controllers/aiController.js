@@ -1,15 +1,12 @@
 import { GoogleGenAI } from "@google/genai";
 
-
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
-
+const MODEL = process.env.GEMINI_MODEL || "gemini-flash-latest";
 
 let ai;
 const getClient = () => {
   if (!ai) ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
   return ai;
 };
-
 
 const describeError = (error) => {
   const raw = error?.message || String(error);
